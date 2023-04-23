@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-/*
+/**
  * Description: main - Writes a string to standard output.
- * Return - Returns '0' if success.
+ * Return - Returns 0 if success.
  */
 
 int main(void)
