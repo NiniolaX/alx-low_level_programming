@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /*
- * main - Writes a string to standard output. 
+ * Description: main - Writes a string to standard output
  * return - returns '0' if success
  */
 
