@@ -4,7 +4,7 @@
  * Return: Returns 0 if success.
  */
 
-int main()
+int main(void)
 {
 	char alphabet = 'a';
 	int i;
