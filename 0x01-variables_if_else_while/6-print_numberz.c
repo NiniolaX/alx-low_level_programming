@@ -5,13 +5,13 @@
  * Return: 0 if success.
  */
 
-int main()
+int main(void)
 {
-	int i;
+	int num;
 
-	for (i=0; i <= 9; i++)
+	for (num = 0; num < 10; num++)
 	{
-		putchar(i + '0');
+		putchar(num + '0');
 	}
 	putchar('\n');
 	return (0);
