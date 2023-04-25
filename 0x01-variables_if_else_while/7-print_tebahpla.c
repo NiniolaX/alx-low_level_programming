@@ -8,6 +8,7 @@
 int main(void)
 {
 	char alpha, i;
+	
 	alpha = 'z';
 
 	for (i = 26; i > 0 ; i--)
