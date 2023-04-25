@@ -8,7 +8,7 @@ int main(void)
 {
 	int lowercase, uppercase;
 	int i;
-	
+
 	lowercase = 'a';
 	uppercase = 'A';
 
@@ -25,5 +25,5 @@ int main(void)
 	}
 
 	putchar('\n');
-	return (0);	
+	return (0);
 }
