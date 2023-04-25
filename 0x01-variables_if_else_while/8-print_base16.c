@@ -11,8 +11,8 @@ int main(void)
 
 	for (hexa = 0; hexa < 16; hexa++)
 	{
-		if (hexa < 10) 
-		{
+		if (hexa < 10)
+			{
 			putchar(hexa + '0');
 		} else
 		{
