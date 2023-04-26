@@ -3,7 +3,7 @@
 
 /**
  * Description: _abs - Computes the absolute value of an integer.
- * @x: Variable to be read.
+ * @c: Variable to be read.
  * Return: 0 if success.
  */
 
