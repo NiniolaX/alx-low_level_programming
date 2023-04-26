@@ -15,10 +15,9 @@ int _abs(int c)
 	{
 		abs_val = c * -1;
 		return (abs_val);
-	} else if (c > 0)
+	}  
 	{
 		abs_val = c;
 		return (abs_val);
 	}
-	return (c);
 }
