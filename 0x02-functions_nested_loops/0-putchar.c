@@ -2,7 +2,7 @@
 
 /**
  * Description: main - prints'_putchar'.
- * Returns: 0.
+ * Return: 0 if success.
  */
 
 int main(void)
