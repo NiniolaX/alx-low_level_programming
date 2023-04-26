@@ -1,9 +1,10 @@
 #include "main.h"
 #include <stdio.h>
 
-/*Description: _abs - Computes the absolute value of an integer.
- *@x: Variable to be read.
- *Return: 0 if success.
+/**
+ * Description: _abs - Computes the absolute value of an integer.
+ * @x: Variable to be read.
+ * Return: 0 if success.
  */
 
 int _abs(int c)
@@ -19,5 +20,5 @@ int _abs(int c)
 		abs_val = c;
 		return (abs_val);
 	}
-	return(c);
+	return (c);
 }
