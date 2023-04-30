@@ -1,2 +1,3 @@
 ##0x03. C - DEBUGGUNG
-This directory contains the solutiond to the above mentioned ALX project.
+
+In this project, we would be testing our knowledge of debugging in C.
