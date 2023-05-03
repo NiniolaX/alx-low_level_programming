@@ -8,14 +8,20 @@
 
 void print_rev(char *s)
 {
-	int i = 0;
-	char s[i] = '\0';
-	
-	while (s[i] < '\0')
+	int i;
+
+	/* Calculate the length of the string */
+	int length = 0;
+
+	while (s[length] != '\0')
 	{
-		_putchar(s[i]);
-		i--;
+		length++;
 	}
 
+	/* Print the string in reverse */
+	for (i = length; i >= 0; i--)
+	{
+		_putchar(s[i]);
+	}
 	_putchar('\n');
 }
