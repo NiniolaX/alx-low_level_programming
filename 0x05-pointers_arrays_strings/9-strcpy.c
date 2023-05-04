@@ -20,7 +20,7 @@ char *_strcpy(char *dest, char *src)
 	}
 
 	/* Copy characters in string src to dest */
-	for (i = 0; i < length; i++)
+	for (i = 0; i < length + 1; i++)
 	{
 		dest[i] = src[i];
 	}
