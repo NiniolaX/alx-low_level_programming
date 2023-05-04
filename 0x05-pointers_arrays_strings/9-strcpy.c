@@ -21,6 +21,7 @@ char *_strcpy(char *dest, char *src)
 
 	/* Copy characters in string src to dest */
 	for (i = 0; i < length + 1; i++)
+		/* length + 1 is to print null terminator */
 	{
 		dest[i] = src[i];
 	}
