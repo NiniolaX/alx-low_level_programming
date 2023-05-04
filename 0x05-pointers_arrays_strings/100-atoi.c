@@ -28,13 +28,20 @@ int _atoi(char *s)
 
 		if (s[i] >= 48 && s[i] <= 57)
 		{
-			/** Converts the current char to ASCII
+			/**
+			 * Converts the current char to ASCII
 			 * Updates value of current char
 			 */
 			integer = (s[i] - '0') + integer * 10;
-			/* Checks if next char is a digit */
-			if (!(s[i + 1] > 48 || s[i + 1] < 57))
+
+			/**
+			 * Checks if next char is a digit
+			 * Breaks loop if it is not
+			 */
+			if (s[i + 1] < 48 || s[i + 1] > 57)
+			{
 				break;
+			}
 		}
 	}
 
