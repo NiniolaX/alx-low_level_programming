@@ -19,8 +19,8 @@ void print_rev(char *s)
 	}
 
 	/* Print the string in reverse */
-	for (i = length - 1; i >= 0; i--) /* length - 1 is used to omit last
-	element	'\0' from output */
+	for (i = length - 1; i >= 0; i--)
+	/* length - 1 is used to omit last element '\0' from output */
 	{
 		_putchar(s[i]);
 	}
