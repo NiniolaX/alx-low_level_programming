@@ -10,7 +10,7 @@
 void reverse_array(int *a, int n)
 {
 	int i, j, number;
-	/* Number to temporarily hold the element of a */
+	/* 'number' is to temporarily hold the element of array a */
 
 	j = 0;
 	for (i = n - 1; i > j; i--)
