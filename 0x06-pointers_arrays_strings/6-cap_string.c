@@ -12,21 +12,15 @@ char *cap_string(char *s)
 
 	for (i = 0; s[i] != '\0'; i++)
 	{
-		/**
-		 * Checks if string element is a whitespace and if next element is a lowecase
-		 * letter
-		 */
-		if ((s[i] == ' ' || s[i] == '\n' || s[i] == '\t' || s[i] == '('
-		|| s[i] == '{' || s[i] == '"')	&& (s[i + 1] >= 97
-		&& s[i + 1] <= 122))
+		/* Checks if previous element is a special characher */
+		if ((s[i - 1] == ' ' || s[i - 1] == '\n' || s[i - 1] == '\t'
+		|| s[i - 1] == ',' || s[i - 1] == ';' || s[i - 1] == '.'
+		|| s[i - 1] == '!' || s[i - 1] == '?' || s[i - 1] == '('
+		|| s[i - 1] == ')' || s[i - 1] == '{' || s[i - 1] == '}'
+		|| s[i - 1] == '"') && (s[i] >= 97 && s[i] <= 122))
 		{
-			s[i + 1] = s[i + 1] - 32;
-		}
-		else if ((s[i] == ',' || s[i] == ';' || s[i] == '.' ||
-		s[i] == '!' || s[i] == '?' || s[i] == ')' || s[i] == '}')
-		&& s[i + 2] >= 97 && s[i + 2] >= 122)
-		{
-			s[i + 2] = s[i + 2] - 32;
+			/* Capitalizes current lowercase letter */
+			s[i] = s[i] - 32;
 		}
 	}
 
