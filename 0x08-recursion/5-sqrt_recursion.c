@@ -1,11 +1,10 @@
 #include "main.h"
 
 /**
- * _sqrt_recursion - Calculates the natural square root of a given number.
- * sqrt_helper - Finds the guess that is equal to the root of the number,
- * @n: Number whose square root is to be calculated.
- * @guess: Initial guess root.
- * Return: Natural square root of number or -1 for number without natural sqrt.
+ * sqrt_helper - Finds the guess which equals natural square root of nuumber.
+ * @n: Number whose square root is to be found.
+ * @guess: Guess of square root of number.
+ * Return: Guess which is natural square root of number.
  */
 
 int sqrt_helper(int n, long guess)
@@ -25,6 +24,12 @@ int sqrt_helper(int n, long guess)
 		return (sqrt_helper(n, guess + 1));
 	}
 }
+
+/**
+ * _sqrt_recursion- Calculates the natural square root of a given number.
+ * @n: Number whose square root is to be calculated.
+ * Return: Natural square root of number or -1 for number without natural sqrt.
+ */
 int _sqrt_recursion(int n)
 {
 	long guess = 1;
