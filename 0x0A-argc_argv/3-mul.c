@@ -8,7 +8,7 @@
  * Return: 0 if success, 1 if it doesn't receive two arguments
  */
 
-int main (int argc, char **argv)
+int main(int argc, char **argv)
 {
 	int product;
 
