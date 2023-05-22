@@ -11,32 +11,27 @@
 
 char *str_concat(char *s1, char *s2)
 {
-	int len1, len2, i, j;
+	int len1 = 0, len2 = 0, i, j;
 	char *p;
 
-	/* Calculate the length of first string s1 */
-	len1 = 0;
+	if (s1 == NULL)
+	{
+		s1 = "";
+	}
+	if (s2 == NULL)
+	{
+		s2 = "";
+	}
+	/* Calculate the length of each string s1 */
 	while (s1[len1] != 0)
 	{
 		len1++;
 	}
-	/* Calculate the length of second string s2 */
-	len2 = 0;
 	while (s2[len2] != 0)
 	{
 		len2++;
 	}
-
-	/* Check if NULL is passed */
-	if (s1 == NULL || s2 == NULL)
-	{
-		return (NULL);
-	}
-
-	/* Allocate memory for both concatenated string in heap */
 	p = (char *)malloc((len1 + len2 + 1) * sizeof(char));
-
-	/* If memory allocation fails, return NULL */
 	if (p == NULL)
 	{
 		return (NULL);
