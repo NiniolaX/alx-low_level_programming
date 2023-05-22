@@ -25,8 +25,9 @@ char *_strdup(char *str)
 		length++;
 	}
 	/* Create memory space in the heap for string */
-	p = (char *)malloc(length * sizeof(char));
+	p = (char *)malloc(length + 1 * sizeof(char));
 
+	/*Return NULL if memory allocation fails */
 	if (p == NULL)
 	{
 		return (NULL);
