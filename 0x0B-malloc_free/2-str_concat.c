@@ -27,6 +27,12 @@ char *str_concat(char *s1, char *s2)
 		len2++;
 	}
 
+	/* Check if NULL is passed */
+	if (s1 == NULL || s2 == NULL)
+	{
+		return (NULL);
+	}
+
 	/* Allocate memory for both concatenated string in heap */
 	p = (char *)malloc((len1 + len2 + 1) * sizeof(char));
 
