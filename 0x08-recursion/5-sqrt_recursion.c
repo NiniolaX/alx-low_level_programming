@@ -4,11 +4,11 @@
  * _sqrt_helper - finds guess which equals the natural square root of number
  * @n: number
  * @guess: guess of natural square root
- * Return: guess whic equals natural square root of number
+ * Return: guess which equals natural square root of number
  */
 int _sqrt_helper(int n, int guess)
 {
-	/* When natural root is found */
+	/* When natural square root is found */
 	if (guess * guess == n)
 	{
 		return (guess);
@@ -22,7 +22,7 @@ int _sqrt_helper(int n, int guess)
 }
 
 /**
- * _sqrt_recursion - calculates the square root of number
+ * _sqrt_recursion - finds the natural square root of a given number
  * @n: number whose square root is to be calculated
  * Return: natural square root of number or -1 if error
  */
