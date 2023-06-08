@@ -8,3 +8,5 @@ They are:
 5. 4-pow_recursion.c - Returns the value of x raised to power y.
 6. 5-sqrt_recursion.c - Returns the natural square root of a number.
 7. 6-is_prime_number.c - Checks if an input integer is a prime number.
+8. 100-is_palindrome.c - Checks if a string is palindrome or not.
+9. 101-wildcmp.c - Checks if two input strings are identical.
