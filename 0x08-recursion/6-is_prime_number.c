@@ -14,6 +14,7 @@ int _prime_helper(int n, int divisor)
 	{
 		return (0);
 	}
+	/* When integer is a prime number*/
 	else if (n % divisor == 0 && n / divisor == 1)
 	{
 		return (1);
@@ -31,7 +32,7 @@ int is_prime_number(int n)
 	int divisor = 1;
 
 	/* Base cases */
-	if (n < 0 || n == 0 || n == 1)
+	if (n <= 1)
 	{
 		return (0);
 	}
