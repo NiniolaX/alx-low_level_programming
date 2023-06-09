@@ -5,6 +5,7 @@
  * main - Adds positive numbers
  * @argc: Number of arguments passed to main
  * @argv: Array of arguments passed to main
+ *
  * Return: 0 if success, 1 if error.
  */
 
