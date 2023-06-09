@@ -19,15 +19,15 @@ int main(int argc, char *argv[])
 	}
 	while (i < argc)
 	{
-	/* Checks if argument is a number */
-	if (*argv[i] < 48 || *argv[i] > 57)
-	{
-		printf("Error\n");
-		return (1);
-	}
+		if (*argv[i] < 48 || *argv[i] > 57)
+		{
+			printf("Error\n");
+			return (1);
+		}
 		sum = sum + atoi(argv[i]);
 		i++;
 	}
 	printf("%d\n", sum);
+
 	return (0);
 }
