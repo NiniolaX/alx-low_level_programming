@@ -2,17 +2,15 @@
 #include <stdlib.h>
 
 /**
- * main - Adds positive numbers
- * @argc: Number of arguments passed to main
- * @argv: Array of arguments passed to main
- *
- * Return: 0 if success, 1 if error.
+ * main - adds positive numbers
+ * @argc: number of arguments passed to main
+ * @argv: array of arguments passed to main
+ * Return: 0 if success, 1 if otherwise
  */
 
 int main(int argc, char *argv[])
 {
-	int i;
-	int sum = 0;
+	int i = 1, sum = 0;
 
 	if (argc == 1)
 	{
@@ -21,7 +19,6 @@ int main(int argc, char *argv[])
 	}
 	else
 	{
-		i = 1;
 		while (i < argc)
 		{
 			if (*argv[i] < 48 || *argv[i] > 57)
