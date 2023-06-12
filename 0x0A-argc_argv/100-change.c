@@ -2,14 +2,14 @@
 #include <stdlib.h>
 
 /**
- * num_coins - Calculates the number of coins to make change for an amount of
+ * calc_coins - Calculates the number of coins to make change for an amount of
  *	money
  * @money: Money to make change for
  * @coins: Available coins to make change
  * Return: Minimum number of coins given for money
  */
 
-int num_coins(int money, int coins[])
+int calc_coins(int money, int coins[])
 {
 	int no_of_coins = money / *coins;
 	int change_bal = money - (*coins * no_of_coins);
@@ -24,7 +24,7 @@ int num_coins(int money, int coins[])
 	{
 		return (no_of_coins);
 	}
-	return (no_of_coins + num_coins(change_bal, coins + 1));
+	return (no_of_coins + calc_coins(change_bal, coins + 1));
 }
 /**
  * main - Prints the minimum number of coins to make change for an amount of
@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
 		return (1);
 	}
 
-	min_number_of_coins = num_coins(money, coins);
+	min_number_of_coins = calc_coins(money, coins);
 	printf("%d\n", min_number_of_coins);
 
 	return (0);
