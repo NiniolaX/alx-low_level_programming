@@ -10,7 +10,7 @@
 
 int main(int argc, char *argv[])
 {
-	int i = 1, sum = 0, num;
+	int i = 1, j, sum = 0, num;
 
 	/* Action if no argument is passed */
 	if (argc == 1)
@@ -22,15 +22,18 @@ int main(int argc, char *argv[])
 	{
 		while (i < argc)
 		{
-			/* Checks that argument is a number */
-			num = atoi(argv[i]);
-			if ((*argv[i] < 48 && *argv[i] != 45) || (*argv[i] > 57))
+			/* Loops through each argument char to check for sumbols */
+			for (j = 0; argv[i][j] != 0; j++)
 			{
-				printf("Error\n");
-				return (1);
+				if ((argv[i][j] < 48) || (argv[i][j] > 57))
+				{
+					printf("Error\n");
+					return (1);
+				}
 			}
-			/* Adds only positive numbers */
-			else if (num > 0)
+			/* Ensures only positive numbers are added */
+			num = atoi(argv[i]);
+			if (num > 0)
 			{
 				sum += num;
 			}
