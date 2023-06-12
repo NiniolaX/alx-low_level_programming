@@ -11,24 +11,20 @@
 
 int num_coins(int money, int coins[])
 {
-	int i = 0;
+	int no_of_coins = money / *coins;
+	int change_bal = money - (*coins * no_of_coins);
 
+	/* Return no of coins if there's no change left after first division */
 	if (money % *coins == 0)
 	{
-		return (money / *coins);
+		return (no_of_coins);
 	}
-	else
+	/* Returns no of coins if change balance is zero */
+	if (change_bal == 0)
 	{
-		while (*coins != '\0')
-		{
-			if (money % coins[i] == coins[i + 1])
-			{
-				return (money / *coins + 1);
-			}
-			i++;
-		}
+		return (no_of_coins);
 	}
-	return (num_coins(money, coins + 1));
+	return (no_of_coins + num_coins(change_bal, coins + 1));
 }
 /**
  * main - Prints the minimum number of coins to make change for an amount of
