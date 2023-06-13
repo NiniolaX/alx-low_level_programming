@@ -18,16 +18,10 @@ int **alloc_grid(int width, int height)
 		return (NULL);
 	}
 
-	/**
-	 * Allocates memory for row no of blocks/rows and returns pointer
-	 * to first block/row
-	 */
+	/* Allocate memory for row number of blocks/rows */
 	array = (int **)malloc(row * sizeof(int *));
 
-	/**
-	 * Allocate memory for col no of integers in each row and returns
-	 * pointer to first integer
-	 */
+	/* Allocate memory for col number of integers in each row */
 	for (i = 0; i < row; i++)
 	{
 		array[i] = (int *)malloc(col * sizeof(int));
@@ -37,20 +31,17 @@ int **alloc_grid(int width, int height)
 	{
 		return (NULL);
 	}
-	else
+	for (j = 0; j < row; j++)
 	{
-		for (j = 0; j < row; j++)
+		for (k = 0; k < col; k++)
 		{
-			for (k = 0; k < col; k++)
-			{
-				array[j][k] = 0;
-			}
+			array[j][k] = 0;
 		}
 	}
 	return (array);
 
 	/* Free memory reserved for col no of elements in each row */
-	for (l = 0; l < col; l++)
+	for (l = 0; l < row; l++)
 	{
 		free(array[l]);
 	}
