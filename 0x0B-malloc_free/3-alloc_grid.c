@@ -3,28 +3,34 @@
 
 /**
  * alloc_grid - Returns a pointer to a 2-dimensional array of integers
- * @width: Width of array
- * @height: Height of array
- * Return: pointer to 2-dimensional array
+ * @width: Width of array (i.e. numer of columns)
+ * @height: Height of array (i.e. number of rows)
+ * Return: Pointer to 2-dimensional array, or NULL on failure.
  */
 
 int **alloc_grid(int width, int height)
 {
+	int row = height, col = width, i, j, k, l;
 	int **array;
-	int i, j;
 
-	if (width <= 0 || height <= 0)
+	if (row <= 0 || col <= 0)
 	{
 		return (NULL);
 	}
 
-	/* Allocate memory for rows */
-	array = (int **)malloc(height * sizeof(*array));
+	/**
+	 * Allocates memory for row no of blocks/rows and returns pointer
+	 * to first block/row
+	 */
+	array = (int **)malloc(row * sizeof(int *));
 
-	/* Allocate memory for each column in each row */
-	for (j = 0; j < width; j++)
+	/**
+	 * Allocate memory for col no of integers in each row and returns
+	 * pointer to first integer
+	 */
+	for (i = 0; i < row; i++)
 	{
-		array[j] = (int *)malloc(height * sizeof(int));
+		array[i] = (int *)malloc(col * sizeof(int));
 	}
 
 	if (array == NULL || *array == NULL)
@@ -33,19 +39,21 @@ int **alloc_grid(int width, int height)
 	}
 	else
 	{
-		for (i = 0; i < height; i++)
+		for (j = 0; j < row; j++)
 		{
-			for (j = 0; j < width; j++)
+			for (k = 0; k < col; k++)
 			{
-				array[i][j] = 0;
+				array[j][k] = 0;
 			}
 		}
 	}
-
 	return (array);
-	for (j = 0; j < width; j++)
+
+	/* Free memory reserved for col no of elements in each row */
+	for (l = 0; l < col; l++)
 	{
-		free(array[j]);
+		free(array[l]);
 	}
+	/* Free memory reserved for each row */
 	free(array);
 }
