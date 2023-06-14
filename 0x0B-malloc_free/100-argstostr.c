@@ -26,33 +26,42 @@ int _strlen(char *s)
  */
 char *argstostr(int ac, char **av)
 {
-	int i, j, strlength;
-	char* str;
+	char *str;
+	int i, j = 0, k = 0, str_length, arg_length;
 
 	if (ac == 0 || av == NULL)
 	{
 		return (NULL);
 	}
 
-	/* Calculate length of each argument to string */
 	for (i = 0; i < ac; i++)
 	{
-		strlength += _strlen(av[i]);
+		str_length += _strlen(av[i]);
 	}
 
-	str = malloc(1 + ac + strlength * sizeof(char));
+	/* Add length of newline character and null terminator */
+	str_length +=  ac + 1;
 
-	/* Allocate each argument to new string */
-	j = 0;
+	/* Allocate memory space for string */
+	str = (char *)malloc(str_length * sizeof(char));
+	if (str == NULL)
+	{
+		return (NULL);
+	}
+
+	/* Assign each string'S elements to new string */
 	for (i = 0; i < ac; i++)
 	{
-		while (av[i][j] != '\0')
+		arg_length = _strlen(av[i]);
+		for (j = 0; j < arg_length; j++)
 		{
-			str[j] = av[i][j];
-			j++;
+			str[k] = av[i][j];
+			k++;
 		}
-		str[j++] += '\n';
+		str[k++] = '\n';
 	}
+	/* Add terminating null character */
+	str[str_length - 1] = '\0';
 
 	return (str);
 	free(str);
