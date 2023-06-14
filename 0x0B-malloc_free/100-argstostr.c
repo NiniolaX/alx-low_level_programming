@@ -40,16 +40,16 @@ char *argstostr(int ac, char **av)
 	}
 
 	/* Add length of newline character and null terminator */
-	str_length +=  ac + 1;
+	str_length += ac + 1;
 
 	/* Allocate memory space for string */
-	str = (char *)malloc(str_length * sizeof(char));
+	str = malloc(str_length * sizeof(char));
 	if (str == NULL)
 	{
 		return (NULL);
 	}
 
-	/* Assign each string'S elements to new string */
+	/* Assign each string's elements to new string */
 	for (i = 0; i < ac; i++)
 	{
 		arg_length = _strlen(av[i]);
