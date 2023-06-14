@@ -1,4 +1,5 @@
 ##0X0B. C- DYNAMIC MEMORY ALLOCATION USING malloc AND free
+
 In this project, I used the C library functions for dynamic memory allocation-
  'malloc' and 'free', to allocate memoryies for data types and variables in C.
 
@@ -14,5 +15,10 @@ The C files in this repository and their uses are as follows:
 
 4. 3-alloc_grid.c - Returns a pointer to a 2-dimensional array of integers.
 
+
 5. 4-free_grid.c - Frees a 2-dimensional grid previously created by the
 	alloc_grid function above.
+
+6. 100-argstostr.c - Concatenates all arguments passed to program.
+
+7. 101-strtow.c - Splits a string into words.
