@@ -6,9 +6,9 @@
  * @s: String
  * Return: length of string
  */
-int _strlen(char *s)
+size_t _strlen(char *s)
 {
-	int length = 0;
+	size_t length = 0;
 
 	while (s[length] != '\0')
 	{
@@ -27,30 +27,30 @@ int _strlen(char *s)
 char *argstostr(int ac, char **av)
 {
 	char *str;
-	int i, j = 0, k = 0, str_length, arg_length;
+	size_t i, j = 0, k = 0, arg_length, str_length;
+	size_t ac_size = (size_t)ac;
 
 	if (ac == 0 || av == NULL)
 	{
 		return (NULL);
 	}
 
-	for (i = 0; i < ac; i++)
+	/* Calculate length of string, added 1 for newline character */
+	for (i = 0; i < ac_size; i++)
 	{
 		str_length += _strlen(av[i]);
 	}
-
-	/* Add length of newline character and null terminator */
-	str_length += ac + 1;
+	str_length += ac_size;
 
 	/* Allocate memory space for string */
-	str = malloc(str_length * sizeof(char));
+	str = malloc(1 + str_length * sizeof(char));
 	if (str == NULL)
 	{
 		return (NULL);
 	}
 
-	/* Assign each string's elements to new string */
-	for (i = 0; i < ac; i++)
+	/* Add each string's elements to new string */
+	for (i = 0; i < ac_size; i++)
 	{
 		arg_length = _strlen(av[i]);
 		for (j = 0; j < arg_length; j++)
