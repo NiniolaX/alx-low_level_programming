@@ -35,15 +35,14 @@ char *argstostr(int ac, char **av)
 		return (NULL);
 	}
 
-	/* Calculate length of string, added 1 for newline character */
+	/* Calculate length of string */
 	for (i = 0; i < ac_size; i++)
 	{
 		str_length += _strlen(av[i]);
 	}
-	str_length += ac_size;
 
 	/* Allocate memory space for string */
-	str = malloc(1 + str_length * sizeof(char));
+	str = malloc(str_length * sizeof(char) + ac_size + 1);
 	if (str == NULL)
 	{
 		return (NULL);
