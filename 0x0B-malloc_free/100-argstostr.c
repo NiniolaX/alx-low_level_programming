@@ -40,9 +40,10 @@ char *argstostr(int ac, char **av)
 	{
 		str_length += _strlen(av[i]);
 	}
+	str_length += ac_size + 1;
 
 	/* Allocate memory space for string */
-	str = malloc(str_length * sizeof(char) + ac_size + 1);
+	str = malloc(str_length * sizeof(char));
 	if (str == NULL)
 	{
 		return (NULL);
