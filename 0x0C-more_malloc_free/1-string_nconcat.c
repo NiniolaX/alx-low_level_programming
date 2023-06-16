@@ -8,7 +8,7 @@
  */
 unsigned int _strlen(char *s)
 {
-	unsigned int length;
+	unsigned int length = 0;
 
 	while (s[length] != '\0')
 	{
@@ -25,11 +25,10 @@ unsigned int _strlen(char *s)
  * @n: Number of elements in s2 to be stored in new string
  * Return: Pointer to newly allocated space in memory
  */
-
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	char *newstr;
-	unsigned int i, j, s1len, s2len, strlength;
+	char *concat_str;
+	unsigned int i, j, s1len, strlength;
 
 	if (s1 == NULL)
 	{
@@ -41,30 +40,30 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	}
 
 	s1len = _strlen(s1);
-	s2len = _strlen(s2);
-	strlength = s1len + s2len + 1;
 
-	newstr = malloc(sizeof(char) * strlength);
-	if (newstr == NULL)
+	strlength = s1len + n + 1;
+
+	concat_str = malloc(sizeof(char) * strlength);
+	if (concat_str == NULL)
 	{
 		return (NULL);
 	}
 
 	for (i = 0; i < s1len; i++)
 	{
-		newstr[i] = s1[i];
+		concat_str[i] = s1[i];
 	}
 	for (j = 0; j < n; j++)
 	{
-		if (j >= n && s2[j] + 1 == '\0')
+		if (s2[j] + 1 == '\0')
 		{
 			break;
 		}
-		newstr[i + j] = s2[j];
+		concat_str[i + j] = s2[j];
 	}
 
-	newstr[strlength - 1] = '\0';
+	concat_str[strlength - 1] = '\0';
 
-	return (newstr);
-	free(newstr);
+	return (concat_str);
+	free(concat_str);
 }
