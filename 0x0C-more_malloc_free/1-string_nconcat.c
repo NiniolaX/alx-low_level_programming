@@ -6,9 +6,9 @@
  * @s: Input string
  * Return: Length of string
  */
-size_t _strlen(char *s)
+unsigned int _strlen(char *s)
 {
-	size_t length;
+	unsigned int length;
 
 	while (s[length] != '\0')
 	{
@@ -29,8 +29,7 @@ size_t _strlen(char *s)
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *newstr;
-	unsigned int i, j;
-	size_t s1len, s2len, strlength;
+	unsigned int i, j, s1len, s2len, strlength;
 
 	if (s1 == NULL)
 	{
