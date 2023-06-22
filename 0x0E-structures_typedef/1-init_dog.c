@@ -12,9 +12,14 @@
 
 void init_dog(struct dog *d, char *name, float age, char *owner)
 {
+	/* Allocate memory for init_dog */
+	d = malloc(sizeof(struct dog));
 	if (d == NULL)
-		d = malloc(sizeof(struct dog));
+	{
+		return;
+	}
 
+	/* Now that mem alloc is complete, initialize init_dog */
 	d->name = name;
 	d->age = age;
 	d->owner = owner;
