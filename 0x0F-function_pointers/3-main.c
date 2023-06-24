@@ -34,6 +34,6 @@ int main(int argc, char *argv[])
 	}
 
 	/*Print the result of operation */
-	printf("%d\n", ptr(num1, num2);
+	printf("%d\n", ptr(num1, num2));
 	return (0);
 }
