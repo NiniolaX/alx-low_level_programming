@@ -1,6 +1,4 @@
 #include "variadic_functions.h"
-#include "stdarg.h"
-#include "stdio.h"
 
 /**
  * print_all - Prints anything
@@ -17,36 +15,39 @@ void print_all(const char * const format, ...)
 	char *str;
 
 	va_start(arg_list, format);
-	while (format[i] != '\0')
+	if (format != NULL)
 	{
-		switch (format[i])
+		while (format[i] != '\0')
 		{
-			case 'c':
-				printf("%s%c", separator, va_arg(arg_list, int));
-				break;
+			switch (format[i])
+			{
+				case 'c':
+					printf("%s%c", separator, va_arg(arg_list, int));
+					break;
 
-			case 'i':
-				printf("%s%d", separator, va_arg(arg_list, int));
-				break;
+				case 'i':
+					printf("%s%d", separator, va_arg(arg_list, int));
+					break;
 
-			case 'f':
-				printf("%s%f", separator, va_arg(arg_list, double));
-				break;
+				case 'f':
+					printf("%s%f", separator, va_arg(arg_list, double));
+					break;
 
-			case 's':
-				str = va_arg(arg_list, char *);
-				if (str == NULL)
-				{
-					str = "(nil)";
-				}
-				printf("%s%s", separator, str);
-				break;
+				case 's':
+					str = va_arg(arg_list, char *);
+					if (str == NULL)
+					{
+						str = "(nil)";
+					}
+					printf("%s%s", separator, str);
+					break;
 
-			default:
-				break;
+				default:
+					break;
+			}
+			i++;
+			separator = ", ";
 		}
-		i++;
-		separator = ", ";
 	}
 	printf("\n");
 	va_end(arg_list);
