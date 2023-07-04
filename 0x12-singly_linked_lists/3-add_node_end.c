@@ -40,7 +40,7 @@ list_t *add_node_end(list_t **head, const char *str)
 	{
 		ptr = ptr->next;
 	}
-	/* Store address of new last node in former last node's next element */
+	/* Store address of new node in last node's next element */
 	ptr->next = new;
 
 	return (new);
