@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 /**
- * before_main - Prints string before text
+ * str_before_main - Prints string before text
  * Return: void
  */
 
