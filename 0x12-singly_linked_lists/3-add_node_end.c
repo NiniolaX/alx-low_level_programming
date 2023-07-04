@@ -13,18 +13,17 @@ list_t *add_node_end(list_t **head, const char *str)
 	list_t *ptr = *head;
 	unsigned int len = 0;
 
-	new = malloc(sizeof(list_t));
-	if (new == NULL)
-	{
-		return (NULL);
-	}
-
 	/* Calculate length of string */
 	while (str[len] != '\0')
 	{
 		len++;
 	}
 
+	new = malloc(sizeof(size_t));
+	if (new == NULL)
+	{
+		return (NULL);
+	}
 	new->str = strdup(str);
 	new->len = len;
 	new->next = NULL;
@@ -42,7 +41,7 @@ list_t *add_node_end(list_t **head, const char *str)
 		ptr = ptr->next;
 	}
 	/* Store address of new last node in former last node's next element */
-	ptr = new;
+	ptr->next = new;
 
 	return (new);
 }
