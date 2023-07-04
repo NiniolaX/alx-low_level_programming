@@ -1,6 +1,7 @@
-#ifndef LISTS_HEADER_FILE
-#define LISTS_HEADER_FILE
+#ifndef LISTS_HEADER
+#define LISTS_HEADER
 
+#include <stddef.h>
 /**
  * struct list_s - singly linked list
  * @str: string (malloc'ed string)
