@@ -16,6 +16,7 @@ void free_list(list_t *head)
 		/* Store address of next node in temp & move pointer to node */
 		temp = head->next;
 		/* Free node head */
+		free(head->str);
 		free(head);
 		/* Re-assign address of next node to head */
 		head = temp;
