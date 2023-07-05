@@ -2,7 +2,7 @@
 
 /**
  * add_node - Adds a new node at a beginning of a singly linked list list_t
- * @head: Head of linked list
+ * @head: Pointer to address of head node
  * @str: String to be added to beginning of node
  * Return: Address of new head node or NULL if failed
  */

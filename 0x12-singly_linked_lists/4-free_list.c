@@ -2,7 +2,7 @@
 
 /**
  * free_list - Frees a list_t list
- * @head: Head node of list
+ * @head: Address of head node
  * Return: void
  */
 
