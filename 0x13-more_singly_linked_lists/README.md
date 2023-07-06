@@ -33,3 +33,7 @@ The C files and their respective applications are as follows:
 
 11. 10-delete_nodeint.c - Deletes the node at index index of a listint_t linked
 	list.
+
+12. 100-reverse_listint.c - Reverses a listint_t linked list.
+
+13. 101-print_listint_safe.c - Prints a listint_t linked list safely
