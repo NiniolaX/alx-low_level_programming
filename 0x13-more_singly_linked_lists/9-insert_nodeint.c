@@ -31,19 +31,17 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 	/* Traverse to node at index */
 	for (i = 0; i < idx && ptr != NULL; i++)
 	{
-		ptr = ptr->next;
+		if (i == idx - 1)
+		{
+			temp = ptr->next;
+			new->next = temp;
+			ptr->next = new;
+			return (new);
+		}
+		else
+		{
+			ptr = ptr->next;
+		}
 	}
-	if (ptr == NULL)
-	{
-		return (NULL);
-	}
-
-	/* Store the address of the next node in temp */
-	temp = ptr->next;
-	/* Make 'new' the new 'next node' */
-	ptr->next = new;
-	/* Store address of former 'next node' in next element of new */
-	new->next = temp;
-
-	return (new);
+	return (NULL);
 }
