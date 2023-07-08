@@ -38,9 +38,7 @@ unsigned int binary_to_uint(const char *b)
 
 	/* Calculate number of digits in string */
 	while (b[len] != '\0')
-	{
 		len++;
-	}
 	basePow = len - 1;
 
 	for (i = 0; i < len; i++)
