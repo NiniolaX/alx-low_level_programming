@@ -3,7 +3,7 @@
 /**
  * read_textfile - Reads a text file and prints it to the POSIX stdout
  * @filename: Path to file
- * @leters: Number of letters to read and print from file
+ * @letters: Number of letters to read and print from file
  * Return: Actual number of letters it could read and print
  */
 ssize_t read_textfile(const char *filename, size_t letters)
@@ -12,7 +12,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	char *buffer;
 	ssize_t bytesRead, bytesWritten;
 
-	if (filename == NULL)
+	if (filename == NULL || letters == 0)
 		return (0);
 
 	buffer = malloc(sizeof(char) * letters);
@@ -23,6 +23,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (fd == 0)
 		return (0);
 
+	if (letters == 0)
 	bytesRead = read(fd, buffer, letters);
 	if (bytesRead == 0)
 		return (0);
