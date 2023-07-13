@@ -8,9 +8,8 @@
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	int fd;
+	ssize_t fd, bytesRead, bytesWritten;
 	char *buffer;
-	ssize_t bytesRead, bytesWritten;
 
 	if (filename == NULL || letters == 0)
 		return (0);
@@ -20,17 +19,15 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 
 	fd = open(filename, O_RDONLY);
-	if (fd == 0)
-		return (0);
-
-	if (letters == 0)
 	bytesRead = read(fd, buffer, letters);
-	if (bytesRead == 0)
-		return (0);
-
 	bytesWritten = write(STDOUT_FILENO, buffer, bytesRead);
-	if (bytesWritten == 0 || bytesWritten < bytesRead)
+
+	if (fd == -1 || bytesWritten == -1 || bytesRead == -1 ||
+	bytesWritten != bytesRead)
+	{
+		free(buffer);
 		return (0);
+	}
 
 	close(fd);
 	free(buffer);
