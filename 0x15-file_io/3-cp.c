@@ -55,9 +55,9 @@ void cp_file_to_file(const char *file_from, const char *file_to)
  */
 int main(int argc, char **argv)
 {
-	if (argc != 3 || argv[1] == NULL || argv[2] == NULL)
+	if (argc != 3)
 	{
-		dprintf(STDERR_FILENO, "Usage: cp file_from file_to");
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
 	cp_file_to_file(argv[1], argv[2]);
