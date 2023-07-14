@@ -4,7 +4,7 @@
 #define BUFFSIZE 1024
 /**
  * close_file - Closes a file
- * fd - File descriptor of file to be closed
+ * @fd: File descriptor of file to be closed
  * Return: void
  */
 void close_file(int fd)
@@ -32,8 +32,8 @@ void cp_file_to_file(const char *file_from, const char *file_to)
 	fd1 = open(file_from, O_RDONLY);
 	fd2 = open(file_to, O_RDWR | O_CREAT | O_TRUNC, 0664);
 
-	while ((bytesRead = read(fd1, buffer, BUFFSIZE)) > 0)
-	{
+	do {
+		bytesRead = read(fd1, buffer, BUFFSIZE);
 		if (fd1 == -1 || bytesRead == -1)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't read file from file %s\n", file_from);
@@ -46,7 +46,7 @@ void cp_file_to_file(const char *file_from, const char *file_to)
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
 			exit(99);
 		}
-	}
+	} while (bytesRead > 0);
 
 	close_file(fd1);
 	close_file(fd2);
