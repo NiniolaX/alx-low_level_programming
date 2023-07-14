@@ -30,6 +30,11 @@ void cp_file_to_file(const char *file_from, const char *file_to)
 	char buffer[BUFFSIZE];
 
 	fd1 = open(file_from, O_RDONLY);
+	if (fd1 == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read file from file %s\n", file_from);
+		exit(98);
+	}
 	fd2 = open(file_to, O_RDWR | O_CREAT | O_TRUNC, 0664);
 
 	do {
@@ -39,8 +44,8 @@ void cp_file_to_file(const char *file_from, const char *file_to)
 			dprintf(STDERR_FILENO, "Error: Can't read file from file %s\n", file_from);
 			exit(98);
 		}
-		if (buffer != NULL)
-			bytesWritten = write(fd2, buffer, bytesRead);
+
+		bytesWritten = write(fd2, buffer, bytesRead);
 		if (fd2 == -1 || bytesWritten == -1 || bytesWritten != bytesRead)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
