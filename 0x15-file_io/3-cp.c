@@ -36,7 +36,7 @@ void cp_file_to_file(const char *file_from, const char *file_to)
 		bytesRead = read(fd1, buffer, BUFFSIZE);
 		if (fd1 == -1 || bytesRead == -1)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't read file from file %s\n", file_from);
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
 			exit(98);
 		}
 
