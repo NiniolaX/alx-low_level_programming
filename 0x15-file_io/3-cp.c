@@ -32,7 +32,7 @@ void cp_file_to_file(const char *file_from, const char *file_to)
 	fd1 = open(file_from, O_RDONLY);
 	fd2 = open(file_to, O_RDWR | O_CREAT | O_TRUNC, 0664);
 
-	do{
+	do {
 		bytesRead = read(fd1, buffer, BUFFSIZE);
 		if (fd1 == -1 || bytesRead == -1)
 		{
