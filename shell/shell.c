@@ -79,7 +79,10 @@ int main(void)
 		if (pid == 0)
 		{
 			/* Child process */
-			execve(argv[0], argv, environ);
+			if (stat(argv[0], &fileStat) == -1)
+				printf("command: %s not found\n", argv[0]);
+			else
+				execve(argv[0], argv, environ);
 		}
 		else
 		{
