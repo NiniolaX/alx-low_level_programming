@@ -10,7 +10,7 @@ int _setenv(const char *var, const char *value, int overwrite)
 {
 	int varLen = strlen(var), valLen = strlen(value), i, j;
 	int envstrLen = varLen + valLen + 2;
-	char *newVar = NULL;
+	char *newVar = NULL, **environNew;
 
 	for (i = 0; environ[i] != NULL; i++)
 	{
@@ -24,9 +24,9 @@ int _setenv(const char *var, const char *value, int overwrite)
 			if (environ[i] == NULL)
 			{
 				printf("hsh: _setenv: Memory allocation error\n");
-				return (-1)
+				return (-1);
 			}
-			strcpy(environ[i], name);
+			strcpy(environ[i], var);
 			strcat(environ[i], "=");
 			strcat(environ[i], value);
 			return (0);
@@ -56,7 +56,7 @@ int _setenv(const char *var, const char *value, int overwrite)
 				printf("shell: _setenv: Memory allocation error\n");
 				return (-1);
 			}
-			strcpy(newVar, name);
+			strcpy(newVar, var);
 			strcat(newVar, "=");
 			strcat(newVar, value);
 			environNew[j++] = newVar;
