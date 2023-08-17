@@ -10,12 +10,13 @@
  */
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
-	dlistint_t *new, *ptr = *h;
+	dlistint_t *new, *ptr;
 	unsigned int i = 0;
 
 	/* Check if address is valid */
 	if (h == NULL)
 		return (NULL);
+	ptr = *h;
 
 	/* Build new node */
 	new = malloc(sizeof(dlistint_t));
