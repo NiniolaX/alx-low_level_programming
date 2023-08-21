@@ -18,21 +18,21 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		return (NULL);
 	ptr = *h;
 
-	/* Build new node */
-	new = malloc(sizeof(dlistint_t));
-	if (new == NULL)
-		return (NULL);
-
-	new->prev = NULL;
-	new->n = n;
-	new->next = NULL;
-
 	/* idx is 0 */
 	if (idx == 0)
 	{
 		new = add_dnodeint(h, n);
 		return (new);
 	}
+
+	/* Build new node */
+	new = malloc(sizeof(dlistint_t));
+	if (new == NULL)
+		return (NULL);
+	new->prev = NULL;
+	new->n = n;
+	new->next = NULL;
+
 	/* Traverse to idx in list */
 	for (i = 0; i < idx && ptr != NULL; i++)
 	{
