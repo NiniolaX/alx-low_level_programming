@@ -10,7 +10,7 @@
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index;
-	hash_node_t *new = NULL, *ptr = NULL;
+	hash_node_t *new = NULL, *head = NULL, *ptr = NULL;
 
 	if (ht == NULL || key == NULL)
 		return (0);
@@ -31,22 +31,33 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	/* Collision */
 	else
 	{
-		ptr = ht->array[index];
+		ptr = head = ht->array[index];
 
-		/* Build new node of linked list */
-		new = malloc(sizeof(hash_node_t));
-		new->key = (char *)key;
-		if (value != NULL)
-			new->value = strdup(value);
-		else
-			new->value = NULL;
-		new->next = NULL;
-
-		/* Traverse to last node of linked list */
 		while (ptr->next != NULL)
-			ptr = ptr->next;
-		ptr->next = new;
+		{
+			/* If key exists but value is diff, update value */
+			if (strcmp(key, ptr->key) == 0)
+			{
+				ptr->value = realloc(ptr->value, strlen(value));
+				ptr->value = strcpy(ptr->value, value);
+				return (1);
+			}
+			/* If key does not exist, create new node */
+			if (ptr->next->next == NULL)
+			{
+				new = malloc(sizeof(hash_node_t));
+				new->key = (char *)key;
+				if (value != NULL)
+					new->value = strdup(value);
+				else
+					new->value = NULL;
+				/* Add new node at beginning of list */
+				new->next = head->next;
+				head->next = new;
+				return (1);
+			}
+		}
 	}
 
-	return (1);
+	return (0);
 }
