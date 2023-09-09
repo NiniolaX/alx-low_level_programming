@@ -10,7 +10,7 @@
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index;
-	hash_node_t *new = NULL;
+	hash_node_t *new = NULL, ptr = NULL;
 
 	if (ht == NULL || key == NULL)
 		return (0);
@@ -31,6 +31,9 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	/* Collision */
 	else
 	{
+		ptr = ht->array[index];
+
+		/* Build new node of linked list */
 		new = malloc(sizeof(hash_node_t));
 		new->key = (char *)key;
 		if (value != NULL)
@@ -38,7 +41,11 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		else
 			new->value = NULL;
 		new->next = NULL;
-		ht->array[index]->next = new;
+
+		/* Traverse to last node of linked list */
+		while (ptr->next != NULL)
+			ptr = ptr->next;
+		ptr->next = new;
 	}
 
 	return (1);
