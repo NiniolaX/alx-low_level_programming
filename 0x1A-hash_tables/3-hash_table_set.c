@@ -21,7 +21,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	if (ht->array[index] == NULL)
 	{
 		ht->array[index] = malloc(sizeof(hash_node_t));
-		ht->array[index]->key = (char *)key;
+		ht->array[index]->key = strdup(key);
 		if (value != NULL)
 			ht->array[index]->value = strdup(value);
 		else
@@ -32,28 +32,32 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	else
 	{
 		ptr = head = ht->array[index];
-
-		while (ptr->next != NULL)
+		while (ptr != NULL)
 		{
-			/* If key exists but value is diff, update value */
+			/* If key exists */
 			if (strcmp(key, ptr->key) == 0)
 			{
-				ptr->value = realloc(ptr->value, strlen(value));
-				ptr->value = strcpy(ptr->value, value);
+				if (value == NULL)
+					ptr->value = NULL;
+				else
+				{
+					free(ptr->value);
+					ptr->value = strdup(value);
+				}
 				return (1);
 			}
-			/* If key does not exist, create new node */
-			if (ptr->next->next == NULL)
+			/* If key does not exist */
+			if (ptr->next == NULL)
 			{
 				new = malloc(sizeof(hash_node_t));
-				new->key = (char *)key;
+				new->key = strdup(key);
 				if (value != NULL)
 					new->value = strdup(value);
 				else
 					new->value = NULL;
 				/* Add new node at beginning of list */
-				new->next = head->next;
-				head->next = new;
+				new->next = head;
+				head = new;
 				return (1);
 			}
 			ptr = ptr->next;
