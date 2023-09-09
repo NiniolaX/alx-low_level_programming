@@ -56,6 +56,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 				head->next = new;
 				return (1);
 			}
+			ptr = ptr->next;
 		}
 	}
 
