@@ -9,19 +9,24 @@
 char *hash_table_get(const hash_table_t *ht, const char *key)
 {
 	unsigned long int index;
+	hash_node_t *ptr = NULL;
 	char *val = NULL;
 
 	if (ht == NULL || key == NULL)
 		return (NULL);
 
-	/* Get index of key */
 	index = key_index((const unsigned char *)key, ht->size);
 
-	/* Retrieve value at index */
+	/* Key does not exist */
 	if (ht->array[index] == NULL)
 		return (NULL);
-	else
-		val = ht->array[index]->value;
+
+	/* Key exists */
+	for (ptr = ht->array[index]; ptr != NULL; ptr = ptr->next)
+	{
+		if (strcmp(key, ptr->key) == 0)
+			val = ht->array[index]->value;
+	}
 
 	return (val);
 }

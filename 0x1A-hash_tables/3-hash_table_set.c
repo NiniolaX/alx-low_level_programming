@@ -9,29 +9,27 @@
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	unsigned long int index;
-	hash_node_t *new = NULL, *head = NULL, *ptr = NULL;
+	unsigned long int idx;
+	hash_node_t *new = NULL, *ptr = NULL;
 
 	if (ht == NULL || key == NULL)
 		return (0);
-	index = key_index((const unsigned char *)key, ht->size);
-	ptr = head = ht->array[index];
+	idx = key_index((const unsigned char *)key, ht->size);
 
 	/* No collision */
-	if (head == NULL)
+	if (ht->array[idx] == NULL)
 	{
-		head = malloc(sizeof(hash_node_t));
-		head->key = strdup(key);
+		ht->array[idx] = malloc(sizeof(hash_node_t));
+		ht->array[idx]->key = strdup(key);
 		if (value != NULL)
-			head->value = strdup(value);
+			ht->array[idx]->value = strdup(value);
 		else
-			head = NULL;
-		head->next = NULL;
-		ht->array[index] = head;
+			ht->array[idx]->value = NULL;
+		ht->array[idx]->next = NULL;
 		return (1);
 	}
 	/* Collision */
-	while (ptr != NULL)
+	for (ptr = ht->array[idx]; ptr != NULL; ptr = ptr->next)
 	{
 		/* If key exists */
 		if (strcmp(key, ptr->key) == 0)
@@ -55,11 +53,10 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 			else
 				new->value = NULL;
 			/* Add new node at beginning of list */
-			new->next = head;
-			ht->array[index] = new;
+			new->next = ht->array[idx];
+			ht->array[idx] = new;
 			return (1);
 		}
-		ptr = ptr->next;
 	}
 
 	return (0);
