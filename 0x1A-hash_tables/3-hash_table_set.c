@@ -40,7 +40,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 				ptr->value = strdup(value);
 			}
 			else
-				ptr->value = NULL;
+				ptr->value = strdup(value);
 			return (1);
 		}
 		/* If key does not exist */
@@ -52,12 +52,10 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 				new->value = strdup(value);
 			else
 				new->value = NULL;
-			/* Add new node at beginning of list */
 			new->next = ht->array[idx];
 			ht->array[idx] = new;
 			return (1);
 		}
 	}
-
 	return (0);
 }
